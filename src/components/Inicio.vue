@@ -8,9 +8,9 @@
                             <h2 class="card-title text-white text-uppercase">Bienvenido a la Mesa de Servicio</h2>
                         </div>
                         <div class="card-body">
-                            <img src="@/assets/logo.jpg" height="450" class="card-img-top" alt="...">
+                            <img src="@/assets/img/logo.jpg" height="450" class="card-img-top" alt="...">
                             <div class="pt-3">
-                                <a href="/ticket" class="btn btn-primary btn-block text-white"><i class="fas fa-ticket-alt"></i> Crear Ticket</a>
+                                <a href="/ticket" class="btn btn-primary btn-block text-white"><font-awesome-icon icon="ticket-alt" /> Crear Ticket</a>
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,12 @@ import router from './router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+//IMPORTACION DE FONTAWESOME
+require('@/assets/js/fontawesome')
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.config.productionTip = false
 
 new Vue({
