@@ -48,10 +48,9 @@
                                                 <div class="card-header bg-primary text-white font-weight-bold"><font-awesome-icon icon="cubes" /> Información Geneal</div>
                                                 <div class="card-body">
                                                     <div class="form-group input-group mb-3">
-                                                        <select class="custom-select form-control" name="area" aria-describedby="itsolici">
-                                                          <option selected>Tipo de Solicitud</option>
-                                                          <option value="1">Incidencia</option>
-                                                          <option value="2">Solicitud</option>
+                                                        <select id="stsolicitud" class="custom-select form-control" name="area" aria-describedby="itsolici" @change="onChange($event)">
+                                                            <option selected>Tipo de Solicitud</option>
+                                                            <option v-for="item in tsolicitud" :key="item.id" :value="item.id">{{ item.tsolicitud }}</option>
                                                         </select>
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="itsolici"><font-awesome-icon icon="exclamation" /></span>
@@ -59,9 +58,9 @@
                                                     </div>
                                                     <div class="form-group input-group mb-3">
                                                         <select class="custom-select form-control" name="solicitud" aria-describedby="isolici">
-                                                          <option selected>Problema</option>
-                                                          <option value="1">Incidencia</option>
-                                                          <option value="2">Solicitud</option>
+                                                            <option selected>Problema</option>
+                                                            <option value="1">Incidencia</option>
+                                                            <option value="2">Solicitud</option>
                                                         </select>
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text" id="isolici"><font-awesome-icon icon="exclamation-triangle" /></span>
@@ -91,8 +90,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 pt-3">
-                                            <button class="btn btn-primary btn-lg btn-block text-white"><i class="fas fa-ticket-alt"></i>
-                                                Crear Ticket</button>
+                                            <button class="btn btn-primary btn-lg btn-block text-white"><font-awesome-icon icon="ticket-alt" /> Crear Ticket</button>
                                         </div>
                                     </div>
                                 </div>
@@ -107,11 +105,31 @@
 
 <script>
     import navTicket from '@/components/ticket/navTicket.vue'
+    import axios from 'axios'
+    
+    let API_URL = 'http://localhost:3000/api/'
 
     export default {
         name:'tick',
+        data(){
+            return {
+                tsolicitud:[]
+            }
+        },
         components: {
             navTicket
+        },
+        mounted: function(){
+            this.getDatos();
+        },
+        methods:{
+            getDatos(){
+                const url = `${API_URL}/tsolicitud`
+                axios.get(url).then(res => this.tsolicitud = res.data)
+            },
+            onChange(event){
+                console.log(event.target.value)
+            }
         }
     }
 </script>
